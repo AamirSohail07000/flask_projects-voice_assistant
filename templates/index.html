@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice Assistant</title>
+    <style>
+        .mic-button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 16px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .mic-button:active {
+            background-color: #45a049;
+        }
+
+        #command-display {
+            margin-top: 20px;
+            font-size: 18px;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <h1>Voice Assistant</h1>
+    <button class="mic-button" onclick="startRecording()">🎤</button>
+    <p id="command-display">Click the mic to speak your command</p>
+
+    <script>
+        function startRecording() {
+            // Check if the browser supports SpeechRecognition
+            const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+            
+            // Set recognition parameters
+            recognition.lang = 'en-US';
+            recognition.interimResults = false;
+            recognition.maxAlternatives = 1;
+
+            // Start recognition
+            recognition.start();
+
+            // Handle result
+            recognition.onresult = function(event) {
+                const command = event.results[0][0].transcript;
+                document.getElementById('command-display').textContent = "You said: " + command;
+                
+                // Send the command to the Flask backend
+                fetch('/process_voice', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ command: command })
+                }).then(response => response.json())
+                  .then(data => {
+                      console.log("Command processed:", data);
+                  }).catch(error => console.error("Error:", error));
+            };
+
+            // Handle errors
+            recognition.onerror = function(event) {
+                console.error(event.error);
+                alert("Error occurred during voice recognition: " + event.error);
+            };
+        }
+    </script>
+</body>
+</html>
