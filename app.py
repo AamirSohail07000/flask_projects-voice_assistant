@@ -4,10 +4,14 @@ import webbrowser
 import pyttsx3
 
 app = Flask(__name__)
+recognizer = sr.Recognizer()
+engine = pyttsx3.init()
 
 @app.route('/')
-def hello_world():
-    return 'Hello, World!'
+
+def speak(text):
+    engine.say(text)
+    engine.runAndWait()
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    speak("Hello Aamir How may I help you ?")
