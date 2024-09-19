@@ -11,7 +11,7 @@ def connect_to_db():
     connection = mysql.connector.connect(
         host="127.0.0.1:3306",     # Change if you're using a remote server
         user="root", # Your MySQL username
-        password="786123@Ms", # Your MySQL password
+        password="password", # Your MySQL password
         database="voice_assistant_db"  # The database you created
     )
     return connection
