@@ -4,6 +4,7 @@ import pyttsx3
 import webbrowser
 import requests
 import os
+from config import store_command_in_db
 
 app = Flask(__name__)
 
@@ -25,6 +26,9 @@ def process_voice():
 
 
 def processCommand(command):
+    # Store the command in the database
+    store_command_in_db(command)
+
     if "open google" in command.lower():
         webbrowser.open("https://google.com")
     elif "open facebook" in command.lower():
