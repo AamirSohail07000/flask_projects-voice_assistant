@@ -10,6 +10,7 @@ from mysql.connector import Error
 import mysql.connector
 
 def connect_to_db():
+<<<<<<< HEAD
     try:
         connection = mysql.connector.connect(
             host="127.0.0.1",     # Change if you're using a remote server
@@ -44,3 +45,12 @@ def store_command_in_db(command):
 def processCommand(command):
     store_command_in_db(command)  # Store command in database
     # Additional command processing logic...
+=======
+    connection = mysql.connector.connect(
+        host="127.0.0.1:3306",     # Change if you're using a remote server
+        user="root", # Your MySQL username
+        password="password", # Your MySQL password
+        database="voice_assistant_db"  # The database you created
+    )
+    return connection
+>>>>>>> c2a2b86f383d0ae786c97aaf334757d41b3d7c5a
