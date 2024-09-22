@@ -2,7 +2,7 @@
 {%extends "base.html" %}
 {% block title%}Search History {% endblock %}
 {% block content%} 
-<h1>Search History Table</h1>
+<h1 id="search_history">Search History Table</h1>
     <form action="/clear_history" method="post">
         <button type="submit" class="btn btn-danger" href="">Clear History</button>
     </form>
@@ -25,4 +25,7 @@
             {% endfor %}
         </tbody>
     </table>
+    <div>
+        <p class="mt-5 mb-3 text-body-secondary">© Aamir Sohail</p>
+    </div>
 {% endblock %}

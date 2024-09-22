@@ -15,9 +15,15 @@ body {
   max-width: 800px;
 }
 
-h1 {
+#voice_assistant {
   color: #333;
-  text-align: center;   
+  text-align: center;
+  font-size: 100px;   
+}
+#search_history.admin_page{
+  color: #333;
+  text-align: center;
+  font-size: 50px; 
 }
 
 input[type="text"] {
@@ -46,9 +52,9 @@ button:hover {
   background-color: #4CAF50;
   border: none;
   color: white;
-  padding: 15px;
+  padding: 35px;
   text-align: center;
-  font-size: 16px;
+  font-size: 85px;
   border-radius: 50%;
   cursor: pointer;
 }
@@ -58,14 +64,15 @@ button:hover {
 }
 
 #command-display {
-  margin-top: 20px;
-  font-size: 18px;
+  margin-top: 40px;
+  font-size: 45px;
   font-family: Arial, sans-serif;
 }
 
 /* table style */
 
 table {
+  margin-top: 5px;
   width: 100%;
   border-collapse:collapse;
   border: 1px solid #ddd; /* Add border to the table */

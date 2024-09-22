@@ -2,7 +2,7 @@
 {% block title%} Home Page {% endblock %}
 {% block content%} 
     
-    <h1>Voice Assistant</h1>
+    <h1 id="voice_assistant">Voice Assistant</h1>
     <button class="mic-button" onclick="startRecording()">🎤</button>
     <p id="command-display">Click the mic to speak your command</p>
 
@@ -44,4 +44,7 @@
             };
         }
     </script>
+    <div>
+        <p class="mt-5 mb-3 text-body-secondary">© Aamir Sohail</p>
+    </div>
 {% endblock %}

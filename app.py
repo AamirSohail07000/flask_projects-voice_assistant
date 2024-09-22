@@ -82,7 +82,7 @@ def processCommand(command):
 
     if "open google" in command.lower():
         speak("Sure! I am openning google for you")
-        webbrowser.open("https://google.com")
+        webbrowser.open("https://google.com")   
     elif "open facebook" in command.lower():
         speak("Sure! I am openning facebook for you")
         webbrowser.open("https://facebook.com")
@@ -92,6 +92,8 @@ def processCommand(command):
     elif "open linkedin" in command.lower():
         speak("Sure! I am openning linkedin for you")
         webbrowser.open("https://linkedin.com")
+    elif "hello jarvis how are you" in command.lower():
+        speak("Hey,I'm doing great!,How are you ?")       
     else:
         speak("Sorry, I did not understand the command.")
 
