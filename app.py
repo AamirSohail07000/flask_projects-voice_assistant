@@ -4,7 +4,7 @@ import pyttsx3
 import webbrowser
 import requests
 import os
-from config import store_command_in_db
+from config import store_command_in_db, connect_to_db
 
 app = Flask(__name__)
 
@@ -12,6 +12,35 @@ app = Flask(__name__)
 @app.route('/')
 def index():
     return render_template('index.html')
+
+@app.route('/admin')
+def admin_page():
+    return render_template('admin.html')    
+
+@app.route('/search-history')
+def search_history():
+    connection = connect_to_db()
+    if connection is None:
+        return "Failed to connect to database."
+    
+    cursor = connection.cursor()
+
+    try:
+        # query to fetch the search history
+        cursor.execute("SELECT created_at, command FROM users ORDER BY created_at DESC")
+        search_data = cursor.fetchall() # get all records
+
+        # pass data to the template
+        return render_template('search_history.html', search_data=search_data)
+
+    except Exception as e:
+        print(f"Error fetching data: {e}")
+        return "Error fetching data"
+
+    finally:
+        cursor.close()
+        connection.close()            
+
 
 # Route to handle voice command
 @app.route('/process_voice', methods=['POST'])
@@ -30,12 +59,16 @@ def processCommand(command):
     store_command_in_db(command)
 
     if "open google" in command.lower():
+        speak("Sure! I am openning google for you")
         webbrowser.open("https://google.com")
     elif "open facebook" in command.lower():
+        speak("Sure! I am openning facebook for you")
         webbrowser.open("https://facebook.com")
     elif "open youtube" in command.lower():
+        speak("Sure! I am openning youtube for you")
         webbrowser.open("https://youtube.com")
     elif "open linkedin" in command.lower():
+        speak("Sure! I am openning linkedin for you")
         webbrowser.open("https://linkedin.com")
     else:
         speak("Sorry, I did not understand the command.")
