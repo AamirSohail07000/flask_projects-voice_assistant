@@ -1,23 +1,23 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
+  background-color: hsl(0, 0%, 100%);
+  margin:0;
+  padding-top: 10px;
 }
 
 .container {
-  background-color: white;
+  background-color: transparent;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   text-align: center;
+  margin: 0 auto;
+  max-width: 800px;
 }
 
 h1 {
   color: #333;
+  text-align: center;   
 }
 
 input[type="text"] {
@@ -40,17 +40,42 @@ button {
 button:hover {
   background-color: #4cae4c;
 }
+
+/*  styling mic button*/
+.mic-button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px;
+  text-align: center;
+  font-size: 16px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.mic-button:active {
+  background-color: #45a049;
+}
+
+#command-display {
+  margin-top: 20px;
+  font-size: 18px;
+  font-family: Arial, sans-serif;
+}
+
 /* table style */
 
 table {
   width: 100%;
-  border-collapse: collapse;
+  border-collapse:collapse;
+  border: 1px solid #ddd; /* Add border to the table */
 }
 
 th, td {
   padding: 10px;
   text-align: left;
   border-bottom: 1px solid #ddd;
+  border: 1px solid #ddd; /* Add border to table cells */
 }
 
 th {

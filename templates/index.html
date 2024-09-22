@@ -1,48 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Voice Assistant</title>
-    <style>
-        .mic-button {
-            background-color: #4CAF50;
-            border: none;
-            color: white;
-            padding: 15px;
-            text-align: center;
-            font-size: 16px;
-            border-radius: 50%;
-            cursor: pointer;
-        }
-
-        .mic-button:active {
-            background-color: #45a049;
-        }
-
-        #command-display {
-            margin-top: 20px;
-            font-size: 18px;
-            font-family: Arial, sans-serif;
-        }
-    </style>
-</head>
-<body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">Home</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-              <a class="nav-link active" aria-current="page" href="/admin">Admin</a>
-              <a class="nav-link" href="/search-history">Search History</a>
-              <a class="nav-link" href="#">Insert Custom Search</a>
-            </div>
-          </div>
-        </div>
-      </nav>
+{%extends "base.html" %}
+{% block title%} Home Page {% endblock %}
+{% block content%} 
+    
     <h1>Voice Assistant</h1>
     <button class="mic-button" onclick="startRecording()">🎤</button>
     <p id="command-display">Click the mic to speak your command</p>
@@ -85,5 +44,4 @@
             };
         }
     </script>
-</body>
-</html>
+{% endblock %}

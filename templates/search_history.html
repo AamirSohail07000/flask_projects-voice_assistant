@@ -1,15 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Search History</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-</head>
-<body>
-    <h1>Search History</h1>
 
+{%extends "base.html" %}
+{% block title%}Search History {% endblock %}
+{% block content%} 
+<h1>Search History Table</h1>
+    <form action="/clear_history" method="post">
+        <button type="submit" class="btn btn-danger" href="">Clear History</button>
+    </form>
     <table border="1">
+
+      
         <thead>
             <tr>
                 <th>History</th>
@@ -26,5 +25,4 @@
             {% endfor %}
         </tbody>
     </table>
-</body>
-</html>
+{% endblock %}

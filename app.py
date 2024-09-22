@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, redirect
 import speech_recognition as sr
 import pyttsx3
 import webbrowser
@@ -41,6 +41,28 @@ def search_history():
         cursor.close()
         connection.close()            
 
+@app.route('/clear_history', methods=['POST'])
+def clear_history():
+    connection = connect_to_db()
+    if connection is None:
+        return "Failed to connect to database."
+    
+    cursor = connection.cursor()
+
+    try:
+        # query to clear history
+        cursor.execute("DELETE FROM users")
+        connection.commit()  # Commit the transaction
+
+        return redirect('/search-history')  # Redirect back to the search history page
+
+    except Exception as e:
+        print(f"Error clearing data: {e}")
+        return "Error clearing data"
+
+    finally:
+        cursor.close()
+        connection.close()  
 
 # Route to handle voice command
 @app.route('/process_voice', methods=['POST'])
