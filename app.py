@@ -8,6 +8,12 @@ from config import store_command_in_db, connect_to_db
 
 app = Flask(__name__)
 
+# Function to give voice response using pyttsx3
+def speak(text):
+    engine = pyttsx3.init()
+    engine.say(text)
+    engine.runAndWait()
+
 # Home Route
 @app.route('/')
 def index():
@@ -97,11 +103,7 @@ def processCommand(command):
     else:
         speak("Sorry, I did not understand the command.")
 
-# Function to give voice response using pyttsx3
-def speak(text):
-    engine = pyttsx3.init()
-    engine.say(text)
-    engine.runAndWait()
+
 
 if __name__ == '__main__':
     app.run(debug=True)
