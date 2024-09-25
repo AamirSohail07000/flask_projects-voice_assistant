@@ -5,6 +5,7 @@ import webbrowser
 import requests
 import os
 from config import store_command_in_db, connect_to_db
+import subprocess #for opening vs code
 
 app = Flask(__name__)
 
@@ -21,7 +22,11 @@ def index():
 
 @app.route('/admin')
 def admin_page():
-    return render_template('admin.html')    
+    return render_template('admin.html')
+
+@app.route('/commands')
+def commands_page():
+    return render_template('commands.html')      
 
 @app.route('/search-history')
 def search_history():
@@ -88,7 +93,10 @@ def processCommand(command):
 
     if "open google" in command.lower():
         speak("Sure! I am openning google for you")
-        webbrowser.open("https://google.com")   
+        webbrowser.open("https://www.google.co.in/") 
+    elif "open email" in command.lower():
+        speak("Sure! I am openning your emails for you")
+        webbrowser.open("https://mail.google.com/mail/u/0/#inbox")   
     elif "open facebook" in command.lower():
         speak("Sure! I am openning facebook for you")
         webbrowser.open("https://facebook.com")
@@ -98,8 +106,20 @@ def processCommand(command):
     elif "open linkedin" in command.lower():
         speak("Sure! I am openning linkedin for you")
         webbrowser.open("https://linkedin.com")
-    elif "hello jarvis how are you" in command.lower():
-        speak("Hey,I'm doing great!,How are you ?")       
+    elif "open github" in command.lower():
+        speak("Sure! I am openning Github for you")
+        webbrowser.open("https://github.com/")
+    elif "initiate coding" in command.lower():
+        speak("InitiatedCoding mode. Let’s build something awesome!")
+        subprocess.run([r'C:\Users\sohai\AppData\Local\Programs\Microsoft VS Code\Code.exe'], check=True)
+        webbrowser.open("https://docs.python.org/3.12/")
+        webbrowser.open("https://youtube.com")
+        webbrowser.open("https://github.com/AamirSohail07000")
+        webbrowser.open("https://google.com")
+        webbrowser.open("https://www.w3schools.com/python/default.asp")
+        webbrowser.open("https://linkedin.com")
+    elif "how are you" in command.lower():
+        speak("Hey,I'm doing great!,How can I help ?")       
     else:
         speak("Sorry, I did not understand the command.")
 
