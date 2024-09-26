@@ -110,7 +110,7 @@ def processCommand(command):
         speak("Sure! I am openning Github for you")
         webbrowser.open("https://github.com/")
     elif "initiate coding" in command.lower():
-        speak("InitiatedCoding mode. Let’s build something awesome!")
+        speak("Initiating Coding mode. Let’s build something awesome!")
         subprocess.run([r'C:\Users\sohai\AppData\Local\Programs\Microsoft VS Code\Code.exe'], check=True)
         webbrowser.open("https://docs.python.org/3.12/")
         webbrowser.open("https://youtube.com")
