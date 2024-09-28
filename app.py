@@ -11,9 +11,12 @@ app = Flask(__name__)
 
 # Function to give voice response using pyttsx3
 def speak(text):
-    engine = pyttsx3.init()
-    engine.say(text)
-    engine.runAndWait()
+    try:
+        engine = pyttsx3.init()
+        engine.say(text)
+        engine.runAndWait()
+    except Exception as e:
+        print(f"Error in speak function: {e}")    
 
 # Home Route
 @app.route('/')
